@@ -1,15 +1,21 @@
-#include <stdio.h>
+#include<stdio.h>
 
-int main(){
-	
-	int n,k;
-	long long a=1,b=1,c=1;
-	do{
-	scanf("%d %d",&n,&k);
-	for(int i=1;i<=n;i++) a*=i;
-	for(int i=1;i<=k;i++) b*=i;
-	for(int i=1;i<=n-k;i++)c*=i;
-	printf("%lld", a/(b*c));
-	} while (n<0||n>30);
-	return 0;
+int main(){	
+	int k,n;
+	FILE *f1;
+	printf("Nhap hai so tu file TOHOP.INP:\n");
+    f1 = fopen ("TOHOP.INP", "ab");
+    scanf ("%d %d",&n,&k);
+    fscanf(f1,"%d %d",&n,&k);
+    fprintf (f1,"%d %d\n",n,k);
+	double a=1,b=1,c=1,result;
+	for(int i=1;i<=n;i++) a=a*i;
+	for(int i=1;i<=k;i++) b=b*i;
+	for(int i=1;i<=n-k;i++)c=c*i;
+	result=a/(b*c);
+	printf("Ket qua duoc in ra file TOHOP.OUT:\n");
+	FILE *f2;
+	f2 = fopen("TOHOP.OUT","ab");
+	printf("%.0f\n",result);
+    fprintf(f2,"%.0f\n",result);
 }
